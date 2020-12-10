@@ -1,0 +1,74 @@
+# Requirements.txt contains a list of dependencies for the Python Application #
+
+# Setup modules
+gevent == 1.4.0
+flask == 1.1.1
+
+# default available packages for python3action
+beautifulsoup4 == 4.7.1
+httplib2 == 0.12.1
+kafka_python == 1.4.4
+lxml == 4.3.1
+python-dateutil == 2.7.5
+requests == 2.21.0
+scrapy == 1.6.0
+simplejson == 3.16.0
+virtualenv == 16.3.0
+twisted >= 19.7.0
+
+# packages for numerics
+numpy == 1.16.1
+scikit-learn == 0.20.2
+scipy == 1.2.1
+pandas == 0.24.1
+
+# packages for image processing
+Pillow == 6.2.0
+
+# IBM specific python modules
+ibm_db == 3.0.1
+cloudant == 2.11.0
+# pin watson at 1.x, for 2.x use python:3.7 runtime
+watson-developer-cloud == 1.7.1
+ibm-cos-sdk == 2.5.3
+ibmcloudsql == 0.2.23
+
+# Compose Libs
+psycopg2 == 2.7.7
+pymongo == 3.7.2
+# pin redis at 2.x, for 3.x use python:3.7 runtime
+redis == 2.10.6
+pika == 0.13.0
+# pin elasticsearch at 5.x, for 6.x use python:3.7 runtime
+elasticsearch >=5.0.0,<6.0.0
+cassandra-driver == 3.16.0
+
+# Geospatial modules
+affine==2.2.2
+attrs==18.2.0
+bs4==0.0.1
+certifi==2018.11.29
+chardet==3.0.4
+Click==7.0
+click-plugins==1.0.4
+cligj==0.5.0
+cycler==0.10.0
+GDAL==2.4.0
+geojson==2.4.1
+geomet==0.2.0.post2
+grass-session==0.1
+html2text==2018.1.9
+idna==2.8
+kiwisolver==1.0.1
+pyparsing==2.3.1
+requests==2.21.0
+six==1.12.0
+snuggs==1.4.2
+soupsieve==1.7.3
+tqdm==4.30.0
+urllib3==1.24.1
+rasterio==1.1.0
+pyproj==2.4.1
+Fiona==1.8.11
+Shapely==1.6.4.post2
+ 
