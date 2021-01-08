@@ -1,3 +1,10 @@
+# Geospatial data related files and directories
+*.csv
+*.asc
+*.tif
+*.tiff
+MDT/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
