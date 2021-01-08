@@ -7,12 +7,12 @@ def pick_date_range():
     from_day = widgets.DatePicker(
         description='From day',
         disabled=False,
-        value=date(2019, 11, 1)
+        value=date(2020, 12, 1)
     )
     to_day = widgets.DatePicker(
         description='To day',
         disabled=False,
-        value=date(2019, 11, 30)
+        value=date(2020, 12, 31)
     )
 
     display(from_day)
