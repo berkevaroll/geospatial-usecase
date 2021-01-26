@@ -2,7 +2,12 @@
 
 ## Workflows
 - [NDVI](./NDVI.ipynb): It gets tiles captured by Sentinel-2 and performs atmospheric correction. Then, coumputes NDVI (Normalized Difference Vegetation Index). Finally, it processes the calculated NDVI indexes to compute averages by shape and month.
+
+![NDVI graph](workflow_graphs/ndvi.png)
+
 - [Water Consumption](./WaterConsumption.ipynb): It computes water consumption of crop fields based on temperature and solar irradiance.
+
+![Water Consumption graph](workflow_graphs/evapotranspiration.png)
 
 ## Setup:
 
