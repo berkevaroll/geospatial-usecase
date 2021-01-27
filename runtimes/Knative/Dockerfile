@@ -1,4 +1,4 @@
-FROM cloudbuttonans/geospatial-runtime:3.7-v6
+FROM aitorarjona/geospatial-runtime:v3.7-1
 
 RUN apt-get update && apt-get install -y \
     zip \
