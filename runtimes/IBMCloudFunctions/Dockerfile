@@ -1,47 +1,41 @@
-# Based on: https://github.com/ibm-functions/runtime-python/tree/master/python3.6
-
-FROM python:3.7-slim-buster
-
-ENV FLASK_PROXY_PORT 8080
+FROM python:3.8-buster
 
 RUN apt-get update && \
-    apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    build-essential \
-    gcc \
-    grass \
-    grass-dev \        
-    libc-dev \
-    libxslt-dev \
-    libxml2-dev \
-    libffi-dev \
-    libssl-dev \
-    zip \
-    unzip \
-    vim \
-    libgdal-dev \
-    gdal-bin \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt-cache search linux-headers-generic
+        apt-get upgrade -y && \
+        apt-get install -y --no-install-recommends \
+        build-essential \
+        gcc \
+        grass \
+        grass-dev \        
+        libc-dev \
+        libxslt-dev \
+        libxml2-dev \
+        libffi-dev \
+        libssl-dev \
+        zip \
+        unzip \
+        vim \
+        libgdal-dev \
+        gdal-bin \
+        && rm -rf /var/lib/apt/lists/* \
+        && apt-cache search linux-headers-generic
 
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
 COPY requirements.txt requirements.txt
+RUN pip install --upgrade pip six && pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip setuptools six && \
-    pip install --no-cache-dir -r requirements.txt
+
+ENV FLASK_PROXY_PORT 8080
 
 # create action working directory
-RUN mkdir -p /action
+RUN mkdir -p /action \
+    && mkdir -p /actionProxy \
+    && mkdir -p /pythonAction
 
-RUN mkdir -p /actionProxy
-ADD https://raw.githubusercontent.com/apache/incubator-openwhisk-runtime-docker/8b2e205c39d84ed5ede6b1b08cccf314a2b13105/core/actionProxy/actionproxy.py /actionProxy/actionproxy.py
-
-RUN mkdir -p /pythonAction
-ADD https://raw.githubusercontent.com/apache/incubator-openwhisk-runtime-python/3%401.0.3/core/pythonAction/pythonrunner.py /pythonAction/pythonrunner.py
-
-RUN export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+ADD https://raw.githubusercontent.com/apache/openwhisk-runtime-docker/8b2e205c39d84ed5ede6b1b08cccf314a2b13105/core/actionProxy/actionproxy.py /actionProxy/actionproxy.py
+ADD https://raw.githubusercontent.com/apache/openwhisk-runtime-python/3%401.0.3/core/pythonAction/pythonrunner.py /pythonAction/pythonrunner.py
 
 CMD ["/bin/bash", "-c", "cd /pythonAction && python -u pythonrunner.py"]
 

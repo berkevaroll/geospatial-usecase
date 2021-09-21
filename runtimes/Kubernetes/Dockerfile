@@ -17,7 +17,8 @@ RUN apt-get update && \
         vim \
         libgdal-dev \
         gdal-bin \
-        && rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/* \
+        && apt-cache search linux-headers-generic
 
 # Workaround to work with grass74:
 
@@ -35,53 +36,11 @@ RUN apt-get update && \
 
 # End
 
-RUN pip install --upgrade setuptools six pip \
-        && pip install --no-cache-dir \
-        flask \
-        glob2 \
-        ibm-cos-sdk \
-        redis \
-        PyYAML \
-        kubernetes \
-        numpy \
-        cloudpickle \
-        ps-mem \
-        tblib \
-        gevent \
-        namegenerator \
-        pika \
-        cryptography \
-        scikit-learn \
-        scipy \
-        pandas \
-        Pillow \
-        rio-cogeo==1.1.7 \
-        affine==2.2.2 \
-        attrs==18.2.0 \
-        bs4==0.0.1 \
-        certifi==2018.11.29 \
-        chardet==3.0.4 \
-        cligj==0.5.0 \
-        cycler==0.10.0 \
-        GDAL==2.4.0 \
-        geojson==2.4.1 \
-        geomet==0.2.0.post2 \
-        grass-session==0.5 \
-        html2text==2018.1.9 \
-        idna==2.8 \
-        kiwisolver==1.0.1 \
-        pyparsing==2.3.1 \
-        snuggs==1.4.2 \
-        soupsieve==1.7.3 \
-        rasterio==1.1.0 \
-        pyproj==2.4.1 \
-        Fiona==1.8.11 \
-        Shapely==1.6.4.post2
-
-RUN apt-cache search linux-headers-generic
-
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
+
+COPY requirements.txt requirements.txt
+RUN pip install --upgrade pip six && pip install --no-cache-dir -r requirements.txt
 
 ENV PYTHONUNBUFFERED TRUE
 

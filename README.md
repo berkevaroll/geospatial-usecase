@@ -11,13 +11,13 @@
 
 ## Setup:
 
-*Note*: These notebooks have been developed using Python3.7 - other Python versions might not work.
+*Note*: These notebooks have been developed using Python3.8 - other Python versions might not work.
 
 1. Install [Lithops Serverless Framework](https://github.com/lithops-cloud/lithops)
 
 2. Setup local Python virtual environment:
     ```
-    $ python3.7 -m venv venv
+    $ python3.8 -m venv venv
     $ source venv/bin/activate
     $ (venv) pip install -r requirements
     ```
