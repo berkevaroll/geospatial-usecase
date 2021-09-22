@@ -18,9 +18,9 @@ pandas
 scipy
 Shapely
 rasterio
-geojson
-geomet
+sentinelsat
 grass-session
 rasterio
 Fiona
+rio-cogeo
 GDAL==2.4.0
